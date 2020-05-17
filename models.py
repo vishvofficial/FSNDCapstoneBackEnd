@@ -6,7 +6,7 @@ class Student(db.Model):
     __tablename__ = 'Student'
 
     id = db.Column(db.Integer, primary_key=True)
-    sid = db.Column(db.Integer, unique=True, nullable=False)
+    sid = db.Column(db.BigInteger, unique=True, nullable=False)
     first_name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(20), nullable=False)
     mobile = db.Column(db.Integer, nullable=False)
@@ -47,7 +47,7 @@ class Teacher(db.Model):
     __tablename__ = 'Teacher'
 
     id = db.Column(db.Integer, primary_key=True)
-    tid = db.Column(db.Integer, unique=True, nullable=False)
+    tid = db.Column(db.BigInteger, unique=True, nullable=False)
     first_name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(20), nullable=False)
     mobile = db.Column(db.Integer, nullable=False)
