@@ -70,5 +70,48 @@ def api_index():
     })
 
 
+# ERROR HANDLERS
+
+
+@app.errorhandler(400)
+def bad_request():
+    return jsonify({
+        "error_code": 400,
+        "description": "A Bad Request"
+    }), 400
+
+
+@app.errorhandler(401)
+def not_authorized():
+    return jsonify({
+        "error_code": 401,
+        "description": "Unauthorized"
+    })
+
+
+@app.errorhandler(404)
+def nothing_found():
+    return jsonify({
+        "error_code": 404,
+        "description": "Resource Not Found"
+    }), 404
+
+
+@app.errorhandler(405)
+def not_allowed():
+    return jsonify({
+        "error_code": 405,
+        "description": "Request Method Not Allowed"
+    }), 405
+
+
+@app.errorhandler(500)
+def not_allowed():
+    return jsonify({
+        "error_code": 500,
+        "description": "Something Wrong Happened At Our Side\nPlease Try After Sometime"
+    }), 405
+
+
 if __name__ == '__main__':
     app.run()
