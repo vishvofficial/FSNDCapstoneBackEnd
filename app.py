@@ -34,6 +34,26 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 
+# CORS CONFIG
+
+CORS(app, resources={
+    r'/api/*': {
+        'origins': '*'
+    }
+})
+
+
+@app.after_request
+def after_request(response):
+    response.headers.add(
+        'Access-Control-Allow-Headers', 'Content-Type, Authorization, true'
+    )
+    response.headers.add(
+        'Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PATCH, DELETE'
+    )
+    return response
+
+
 # ROUTES STARTS
 
 @app.route('/')
